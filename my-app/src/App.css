@@ -29,6 +29,20 @@
   top: 5px;
 }
 
+.end-class-button {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  right: 2px;
+  bottom: 5px;
+}
+
+.pikachu {
+  position: absolute;
+  left: 30px;
+  bottom: 10px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
