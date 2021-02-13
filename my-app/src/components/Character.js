@@ -10,13 +10,12 @@ class Character extends React.Component {
       this.state = {
         showModal: false,
         showGreetings: false,
-        nameList: [],
+        nameList: ["hi", "bye"],
       };
 
       this.handleOpenModal = this.handleOpenModal.bind(this);
       this.handleCloseModal = this.handleCloseModal.bind(this);
       this.handleNamesChange = this.handleNamesChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
       this.handleShowGreetings = this.handleShowGreetings.bind(this);
     }
 
@@ -35,13 +34,9 @@ class Character extends React.Component {
       }
     }
 
-    handleSubmit(event) {
-      console.log (this.state.nameList);
-    }
-
     handleShowGreetings() {
       console.log (this.state);
-      //this.setState ({showGreetings: true});
+      this.setState ({showGreetings: true});
     }
 
     render() {
@@ -49,7 +44,7 @@ class Character extends React.Component {
         <div>
           <button onClick={this.handleShowGreetings}> </button>
 
-          Welcome <TextLoop children={["nancy", "bob"]} />
+          <TextLoop children={this.state.nameList}/>
 
           <img src="/dashboard/squirtle.gif" alt="pokemon" onClick={this.handleOpenModal} />
           <ReactModal isOpen={this.state.showModal}>
@@ -59,10 +54,10 @@ class Character extends React.Component {
             <form onSubmit={this.handleSubmit}>
               <div>
                 <label> Enter names seperated by commas: </label>
-                <input type="text" value={this.state.names} onChange={this.handleNamesChange}/>
+                <input type="text" onChange={this.handleNamesChange}/>
               </div>
               <div>
-                <input type="submit" value="Submit" onClick = {this.handleSubmit}/>
+                <input type="submit" value="Submit" onClick = {this.handleCloseModal}/>
               </div>
             </form>
           </ReactModal>
