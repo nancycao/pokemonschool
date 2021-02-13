@@ -46,7 +46,7 @@ class Character extends React.Component {
 
     render() {
       return (
-        <div>
+        <div className="character">
           <button onClick={this.handleShowGreetings}> Show Greetings</button>
           <Speech nameString={this.state.nameInput} showGreetings={this.state.showGreetings}/>
 

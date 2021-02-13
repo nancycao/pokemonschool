@@ -15,8 +15,7 @@ function App() {
         <div className="class-period"><img src={classPeriod} className="class-period" alt="class period"/></div>
         <img src={xpBar} className="xp-bar" alt="experience bar" />
         <img src={endClassButton} className="end-class-button" alt="end class"/>
-        <img src={pikachu} className="pikachu" alt="pikachu"/>
-        <Character />
+        <Character/>
       </div>
     </div>
   );

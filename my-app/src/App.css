@@ -54,6 +54,17 @@
   }
 }
 
+.character {
+  position: absolute;
+  left: 100px;
+  bottom: 30px;
+}
+
+.character img {
+  height: 200px;
+  width: 200px;
+}
+
 .App-header {
   /* background-image: url(./dashboard/background.png); */
   /* background-color: #282c34; */
