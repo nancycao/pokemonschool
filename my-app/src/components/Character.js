@@ -1,6 +1,7 @@
 import React from "react";
 import ReactModal from 'react-modal';
 import TextLoop from "react-text-loop";
+import Speech from "./Speech.js"
 import '../CSS/Character.css'
 
 class Character extends React.Component {
@@ -11,7 +12,6 @@ class Character extends React.Component {
         showModal: false,
         showGreetings: false,
         nameInput: "",
-        nameList: [],
       };
 
       this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -34,13 +34,9 @@ class Character extends React.Component {
     }
 
     handleSubmit (event) {
-      var nameInput = this.state.nameInput;
       console.log("handleSubmit");
-      console.log(nameInput);
-      if (nameInput) {
-        this.setState ( {nameList: nameInput.split(",")} );
-      }
       this.handleCloseModal();
+      event.preventDefault();
     }
 
     handleShowGreetings() {
@@ -51,13 +47,11 @@ class Character extends React.Component {
     render() {
       return (
         <div>
-          <button onClick={this.handleShowGreetings}> </button>
-          <p>Hello</p>
-          <TextLoop children={this.state.nameList}/>
-          <p>World</p>
+          <button onClick={this.handleShowGreetings}> Show Greetings</button>
+          <Speech nameString={this.state.nameInput} showGreetings={this.state.showGreetings}/>
 
           <img src="/dashboard/squirtle.gif" alt="pokemon" onClick={this.handleOpenModal} />
-          <ReactModal isOpen={this.state.showModal}>
+          <ReactModal isOpen={this.state.showModal} ariaHideApp={false}>
 
             <button onClick={this.handleCloseModal}>X</button>
             <div>
