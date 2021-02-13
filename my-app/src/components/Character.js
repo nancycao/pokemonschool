@@ -10,7 +10,7 @@ class Character extends React.Component {
       this.state = {
         showModal: false,
         showGreetings: false,
-        nameList: ["hi", "bye"],
+        nameList: [],
       };
 
       this.handleOpenModal = this.handleOpenModal.bind(this);
