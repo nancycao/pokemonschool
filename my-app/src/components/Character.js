@@ -34,13 +34,13 @@ class Character extends React.Component {
     }
 
     handleSubmit (event) {
-      console.log("handleSubmit");
+      //console.log("handleSubmit");
       this.handleCloseModal();
       event.preventDefault();
     }
 
     handleShowGreetings() {
-      console.log (this.state);
+      //console.log (this.state);
       this.setState ({showGreetings: true});
     }
 

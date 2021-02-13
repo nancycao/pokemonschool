@@ -8,7 +8,7 @@ class Speech extends React.Component {
   }
 
   render () {
-    console.log(this.props.nameString);
+    //console.log(this.props.nameString);
     if (this.props.nameString.length > 0 && this.props.showGreetings) {
       return (
         <div>
