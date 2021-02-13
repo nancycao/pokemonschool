@@ -10,12 +10,14 @@ class Character extends React.Component {
       this.state = {
         showModal: false,
         showGreetings: false,
+        nameInput: "",
         nameList: [],
       };
 
       this.handleOpenModal = this.handleOpenModal.bind(this);
       this.handleCloseModal = this.handleCloseModal.bind(this);
-      this.handleNamesChange = this.handleNamesChange.bind(this);
+      this.handleNameInputChange = this.handleNameInputChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
       this.handleShowGreetings = this.handleShowGreetings.bind(this);
     }
 
@@ -27,11 +29,18 @@ class Character extends React.Component {
       this.setState( { showModal: false } );
     }
 
-    handleNamesChange (event) {
-      var nameString = event.target.value;
-      if (nameString) {
-        this.setState ( {nameList: nameString.split(",")} );
+    handleNameInputChange (event) {
+      this.setState({nameInput: event.target.value});
+    }
+
+    handleSubmit (event) {
+      var nameInput = this.state.nameInput;
+      console.log("handleSubmit");
+      console.log(nameInput);
+      if (nameInput) {
+        this.setState ( {nameList: nameInput.split(",")} );
       }
+      this.handleCloseModal();
     }
 
     handleShowGreetings() {
@@ -43,23 +52,19 @@ class Character extends React.Component {
       return (
         <div>
           <button onClick={this.handleShowGreetings}> </button>
-
+          <p>Hello</p>
           <TextLoop children={this.state.nameList}/>
+          <p>World</p>
 
           <img src="/dashboard/squirtle.gif" alt="pokemon" onClick={this.handleOpenModal} />
           <ReactModal isOpen={this.state.showModal}>
 
             <button onClick={this.handleCloseModal}>X</button>
-
-            <form onSubmit={this.handleSubmit}>
-              <div>
-                <label> Enter names seperated by commas: </label>
-                <input type="text" onChange={this.handleNamesChange}/>
-              </div>
-              <div>
-                <input type="submit" value="Submit" onClick = {this.handleCloseModal}/>
-              </div>
-            </form>
+            <div>
+              <label> Enter names seperated by commas: </label>
+              <input type="text" name="nameInput" value={this.state.nameInput} onChange={this.handleNameInputChange}/>
+              <button type="submit" onClick={this.handleSubmit}>Submit</button>
+            </div>
           </ReactModal>
 
         </div>
