@@ -18,7 +18,6 @@ class Character extends React.Component {
       this.handleCloseModal = this.handleCloseModal.bind(this);
       this.handleNameInputChange = this.handleNameInputChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
-      this.handleShowGreetings = this.handleShowGreetings.bind(this);
     }
 
     handleOpenModal () {
@@ -35,32 +34,28 @@ class Character extends React.Component {
 
     handleSubmit (event) {
       //console.log("handleSubmit");
+      this.setState ({showGreetings: true});
       this.handleCloseModal();
       event.preventDefault();
     }
 
-    handleShowGreetings() {
-      //console.log (this.state);
-      this.setState ({showGreetings: true});
-    }
-
     render() {
       return (
-        <div className="character">
-          <button onClick={this.handleShowGreetings}> Show Greetings</button>
-          <Speech nameString={this.state.nameInput} showGreetings={this.state.showGreetings}/>
+        <div>
+          <div className ="speech">
+            <Speech nameString={this.state.nameInput} showGreetings={this.state.showGreetings}/>
+          </div>
 
-          <img src="/dashboard/squirtle.gif" alt="pokemon" onClick={this.handleOpenModal} />
-          <ReactModal isOpen={this.state.showModal} ariaHideApp={false}>
+          <div className="character">
+            <img src="/dashboard/squirtle.gif" alt="pokemon" onClick={this.handleOpenModal} />
+            <ReactModal isOpen={this.state.showModal} ariaHideApp={false}>
 
-            <button onClick={this.handleCloseModal}>X</button>
-            <div>
-              <label> Enter names seperated by commas: </label>
-              <input type="text" name="nameInput" value={this.state.nameInput} onChange={this.handleNameInputChange}/>
-              <button type="submit" onClick={this.handleSubmit}>Submit</button>
+              <button onClick={this.handleCloseModal}>X</button>
+                <label> Enter names seperated by commas: </label>
+                <input type="text" name="nameInput" value={this.state.nameInput} onChange={this.handleNameInputChange}/>
+                <button type="submit" onClick={this.handleSubmit}>Submit</button>
+            </ReactModal>
             </div>
-          </ReactModal>
-
         </div>
 
       );

@@ -12,12 +12,13 @@ class Speech extends React.Component {
     if (this.props.nameString.length > 0 && this.props.showGreetings) {
       return (
         <div>
-          <span> Welcome </span>
+          <span> Welcome Pokemon Trainer </span>
           <TextLoop children={this.props.nameString.split(',')}/>
+          <span>!</span>
         </div>
       );
     }
-    return <span> No list </span>;
+    return <span> Hi, I'm Squirtle! </span>;
   };
 
 }

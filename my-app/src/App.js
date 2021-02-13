@@ -14,8 +14,19 @@ function App() {
         <img src={homeButton} className='home-button' alt="Home"/>
         <div className="class-period"><img src={classPeriod} className="class-period" alt="class period"/></div>
         <img src={xpBar} className="xp-bar" alt="experience bar" />
+
+        <div className="iframe">
+          <iframe
+            src="https://docs.google.com/presentation/d/1_hcFnYqoaWyBTeXkTZkPQCCVokI_FKuTC1mSs6Iav6c/edit?usp=sharing"
+            frameborder="0"
+            width="800"
+            height="600"
+          ></iframe>
+        </div>
+
         <img src={endClassButton} className="end-class-button" alt="end class"/>
         <Character/>
+
       </div>
     </div>
   );

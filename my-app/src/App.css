@@ -61,8 +61,19 @@
 }
 
 .character img {
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
+}
+
+.speech {
+  position: absolute;
+  left: 100px;
+  bottom: 225px;
+}
+
+.iframe{
+  position: relative;
+  top: 100px;
 }
 
 .App-header {
