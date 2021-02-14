@@ -5,6 +5,12 @@ import '../CSS/ProgressTracking.css'
 import ReactModal from 'react-modal';
 import xpBar from '../assets/dashboard/xp_bar.png';
 import endClassButton from '../assets/dashboard/end_class_button.png';
+import TextLoop from "react-text-loop";
+import Speech from "./Speech.js"
+import '../CSS/Character.css'
+import squirtle from '../assets/dashboard/squirtle.gif';
+import wartortle from '../assets/dashboard/wartortle.gif';
+import blastoise from '../assets/dashboard/blastoise.gif';
 
 class ProgressTracking extends React.Component {
     constructor(props) {
@@ -14,22 +20,41 @@ class ProgressTracking extends React.Component {
         numResponses: "0",
         numResponsesExpected: "0",
         formId: "",
-        showModal: false
+        showCharacterModal: false,
+        showGoalModal: false,
+        showGreetings: false,
+        nameInput: "",
+        pokemon: squirtle,
       };
 
-      this.handleOpenModal = this.handleOpenModal.bind(this);
-      this.handleCloseModal = this.handleCloseModal.bind(this);
+      this.handleOpenGoalModal = this.handleOpenGoalModal.bind(this);
+      this.handleCloseGoalModal = this.handleCloseGoalModal.bind(this);
+
+      this.handleOpenCharacterModal = this.handleOpenCharacterModal.bind(this);
+      this.handleCloseCharacterModal = this.handleCloseCharacterModal.bind(this);
+      this.handleNameInputChange = this.handleNameInputChange.bind(this);
+      this.handleCharacterSubmit = this.handleCharacterSubmit.bind(this);
+      this.handleHideGreeting = this.handleHideGreeting.bind(this);
+
       this.handleFormIdChange = this.handleFormIdChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleGoalSubmit = this.handleGoalSubmit.bind(this);
       this.handleNumResponsesExpected = this.handleNumResponsesExpected.bind(this);
     }
 
-    handleOpenModal () {
-      this.setState( { showModal: true } );
+    handleOpenGoalModal () {
+      this.setState( { showGoalModal: true } );
     }
 
-    handleCloseModal () {
-      this.setState( { showModal: false } );
+    handleCloseGoalModal () {
+      this.setState( { showGoalModal: false } );
+    }
+
+    handleOpenCharacterModal () {
+      this.setState( { showCharacterModal: true } );
+    }
+
+    handleCloseCharacterModal () {
+      this.setState( { showCharacterModal: false } );
     }
 
     handleFormIdChange (event) {
@@ -40,8 +65,23 @@ class ProgressTracking extends React.Component {
       this.setState( { numResponsesExpected: event.target.value } );
     }
 
-    handleSubmit () {
-       this.handleCloseModal();
+    handleGoalSubmit () {
+       this.handleCloseGoalModal();
+    }
+
+    handleNameInputChange (event) {
+      this.setState({nameInput: event.target.value});
+    }
+
+    handleCharacterSubmit (event) {
+      //console.log("handleSubmit");
+      this.setState ({showGreetings: true});
+      this.handleCloseCharacterModal();
+      event.preventDefault();
+    }
+
+    handleHideGreeting (event) {
+      this.setState ({showGreetings: false});
     }
 
     componentDidMount() {
@@ -52,16 +92,24 @@ class ProgressTracking extends React.Component {
               fetch(url, {
                 headers: {
                   method: "GET",
-                  Authorization: "Bearer {token here}",
+                  Authorization: "Bearer 7hXQZBFLh2aQykSDQDyg2fzFeAKKQ3Yqdnb7GW2UzGuF",
                 }
               })
                 .then(res => res.json())
-                .then(json =>
+                .then(json => {
                   //console.log("responses: ", json.total_items.toString())//;
-                  this.setState({numResponses: json.total_items.toString()})
-                );
+                  this.setState({numResponses: json.total_items.toString()});
+                  if (json.total_items == 5) {
+                    this.setState( {pokemon: wartortle} );
+                  };
+                  if (json.total_items == 6) {
+                    this.setState( {pokemon: blastoise} );
+                  };
+                }
+              );
             };
         }, 1000);
+
     }
 
     render() {
@@ -69,13 +117,34 @@ class ProgressTracking extends React.Component {
       if (this.state.numResponsesExpected != "0" && this.state.numResponses != "0") {
         return (
           <div>
+
+          <div>
+            <div className ="speech">
+              <Speech nameString={this.state.nameInput}
+                      showGreetings={this.state.showGreetings}
+              />
+            </div>
+
+            <div className="character">
+              <img src={this.state.pokemon} alt="pokemon" onClick={this.handleOpenModal} />
+              <ReactModal isOpen={this.state.showCharacterModal} ariaHideApp={false}>
+
+                <button onClick={this.handleCloseCharacterModal}>X</button>
+                  <label> Enter names seperated by commas: </label>
+                  <input type="text" name="nameInput" value={this.state.nameInput} onChange={this.handleNameInputChange}/>
+                  <button type="submit" onClick={this.handleCharacterSubmit}>Submit</button>
+              </ReactModal>
+              </div>
+          </div>
+
             <img src={xpBar} className="xp-bar" alt="experience bar" />
             <ProgressBar animated now={this.state.numResponses}
-                                  onClick={this.handleOpenModal}
-                                  max={this.state.numResponsesExpected}/>
-            <ReactModal isOpen={this.state.showModal} ariaHideApp={false}>
+                                  onClick={this.handleOpenGoalModal}
+                                  max={this.state.numResponsesExpected}
+                                  label={this.state.numResponses + "/" + this.state.numResponsesExpected}/>
+            <ReactModal isOpen={this.state.showGoalModal} ariaHideApp={false}>
 
-              <button onClick={this.handleCloseModal}>X</button>
+              <button onClick={this.handleCloseGoalModal}>X</button>
               <div>
                 <label> Enter typeform ID: </label>
                 <input type="text" name="formId" value={this.state.formId} onChange={this.handleFormIdChange}/>
@@ -84,7 +153,7 @@ class ProgressTracking extends React.Component {
                 <label> Enter # of expected total responses: </label>
                 <input type="text" name="numResponsesExpected" value={this.state.numResponsesExpected} onChange={this.handleNumResponsesExpected}/>
               </div>
-              <button type="submit" onClick={this.handleSubmit}>Submit</button>
+              <button type="submit" onClick={this.handleGoalSubmit}>Submit</button>
             </ReactModal>
             {this.state.numResponses == this.state.numResponsesExpected
               ? <a href="https://drive.google.com/file/d/1RswQNOiJAYzuSLR_wM2LeRi5ZCGDIZmi/view?usp=sharing">
@@ -100,11 +169,31 @@ class ProgressTracking extends React.Component {
       }
       return (
         <div>
-          <button className="add btn btn-lg btn-secondary" onClick={this.handleOpenModal}>Add goal</button>
 
-          <ReactModal isOpen={this.state.showModal} ariaHideApp={false}>
+        <div>
+          <div className ="speech">
+            <Speech nameString={this.state.nameInput}
+                    showGreetings={this.state.showGreetings}
+            />
+          </div>
 
-            <button onClick={this.handleCloseModal}>X</button>
+          <div className="character">
+            <img src={this.state.pokemon} alt="pokemon" onClick={this.handleOpenCharacterModal} />
+            <ReactModal isOpen={this.state.showCharacterModal} ariaHideApp={false}>
+
+              <button onClick={this.handleCloseCharacterModal}>X</button>
+                <label> Enter names seperated by commas: </label>
+                <input type="text" name="nameInput" value={this.state.nameInput} onChange={this.handleNameInputChange}/>
+                <button type="submit" onClick={this.handleCharacterSubmit}>Submit</button>
+            </ReactModal>
+            </div>
+        </div>
+
+          <button className="add btn btn-lg btn-secondary" onClick={this.handleOpenGoalModal}>Add goal</button>
+
+          <ReactModal isOpen={this.state.showGoalModal} ariaHideApp={false}>
+
+            <button onClick={this.handleCloseGoalModal}>X</button>
               <div>
                 <div>
                   <label> Enter typeform ID: </label>
@@ -114,7 +203,7 @@ class ProgressTracking extends React.Component {
                   <label> Enter # of expected total responses: </label>
                   <input type="text" name="numResponsesExpected" value={this.state.numResponsesExpected} onChange={this.handleNumResponsesExpected}/>
                 </div>
-                <button type="submit" onClick={this.handleSubmit}>Submit</button>
+                <button type="submit" onClick={this.handleGoalSubmit}>Submit</button>
               </div>
           </ReactModal>
           <img src={endClassButton} className="end-class-button" alt="end class"/>

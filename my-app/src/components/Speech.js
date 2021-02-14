@@ -23,7 +23,7 @@ class Speech extends React.Component {
     return (
       <div className="container">
         <img src={speechbubble}/>
-        <span> Hi, I'm Squirtle! </span>
+        <span> Hello! 😊</span>
       </div>
     );
   };

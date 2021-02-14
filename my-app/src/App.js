@@ -15,8 +15,6 @@ function App() {
         <div className="class-period"><img src={classPeriod} className="class-period" alt="class period"/></div>
         <ProgressTracking/>
         <Lesson/>
-        <Character/>
-
       </div>
     </div>
   );
