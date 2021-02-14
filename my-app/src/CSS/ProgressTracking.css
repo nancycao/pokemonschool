@@ -9,6 +9,6 @@
 .progress {
   position: absolute;
   width: 350px;
-  left: 1050px;
+  right: 30px;
   top: 45px;
 }
