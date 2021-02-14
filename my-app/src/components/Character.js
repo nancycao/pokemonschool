@@ -3,6 +3,7 @@ import ReactModal from 'react-modal';
 import TextLoop from "react-text-loop";
 import Speech from "./Speech.js"
 import '../CSS/Character.css'
+import squirtle from '../assets/dashboard/squirtle.gif';
 
 class Character extends React.Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class Character extends React.Component {
       this.handleCloseModal = this.handleCloseModal.bind(this);
       this.handleNameInputChange = this.handleNameInputChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleHideGreeting = this.handleHideGreeting.bind(this);
     }
 
     handleOpenModal () {
@@ -39,15 +41,20 @@ class Character extends React.Component {
       event.preventDefault();
     }
 
+    handleHideGreeting (event) {
+      this.setState ({showGreetings: false});
+    }
+
     render() {
       return (
         <div>
           <div className ="speech">
-            <Speech nameString={this.state.nameInput} showGreetings={this.state.showGreetings}/>
+            <Speech nameString={this.state.nameInput}
+                    showGreetings={this.state.showGreetings}/>
           </div>
 
           <div className="character">
-            <img src="/dashboard/squirtle.gif" alt="pokemon" onClick={this.handleOpenModal} />
+            <img src={squirtle} alt="pokemon" onClick={this.handleOpenModal} />
             <ReactModal isOpen={this.state.showModal} ariaHideApp={false}>
 
               <button onClick={this.handleCloseModal}>X</button>

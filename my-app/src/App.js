@@ -7,6 +7,7 @@ import endClassButton from './assets/dashboard/end_class_button.png';
 import pikachu from './assets/dashboard/pikachu.png';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Lesson from './components/Lesson.js'
 
 function App() {
   return (
@@ -17,18 +18,8 @@ function App() {
         <div className="class-period"><img src={classPeriod} className="class-period" alt="class period"/></div>
         <img src={xpBar} className="xp-bar" alt="experience bar" />
 
-        // documentation for ProgressBar API
-        // https://react-bootstrap.github.io/components/progress/
-        <ProgressBar animated now={45} />
-
-        <div className="iframe">
-          <iframe
-            src="https://docs.google.com/presentation/d/1_hcFnYqoaWyBTeXkTZkPQCCVokI_FKuTC1mSs6Iav6c/edit?usp=sharing"
-            frameborder="0"
-            width="800"
-            height="600"
-          ></iframe>
-        </div>
+        <ProgressBar animated now={45}/>
+        <Lesson/>
 
         <img src={endClassButton} className="end-class-button" alt="end class"/>
         <Character/>

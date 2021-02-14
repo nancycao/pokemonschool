@@ -24,9 +24,8 @@
 .xp-bar {
   position: absolute;
   width: 500px;
-  height: 88.54px;
   right: 2px;
-  top: 5px;
+  top:-10px;
 }
 
 .end-class-button {
@@ -71,15 +70,11 @@
   bottom: 225px;
 }
 
-.iframe{
-  position: relative;
-  top: 100px;
-}
-
 .progress {
   position: absolute;
-  width: 300px;
-  left: 1100px;
+  width: 350px;
+  left: 1050px;
+  top: 45px;
 }
 
 .App-header {

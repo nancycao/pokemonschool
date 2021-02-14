@@ -1,0 +1,33 @@
+.lesson-input {
+  position: absolute;
+  bottom: 500px;
+}
+
+.iframe{
+  position: relative;
+  top: 100px;
+}
+
+.lesson {
+  margin-top: 300px;
+  text-align: center;
+}
+
+.lesson button{
+  position: absolute;
+  margin-top: 135px;
+  left:690px;
+}
+
+.lesson input{
+  position: absolute;
+  left: 575px;
+  margin-top: 90px;
+  width: 300px;
+}
+
+.lesson img {
+  position: absolute;
+  height: 200px;
+  left: 475px;
+}
