@@ -13,6 +13,11 @@ import wartortle from '../assets/dashboard/wartortle.gif';
 import blastoise from '../assets/dashboard/blastoise.gif';
 import Donation from './Donation.js';
 
+const modalStyle = {content: {
+  'margin-top': '-250px', position: 'absolute', width: '500px', height: '500px',
+  'marginLeft': '-250px', left: '50%', top: '50%'
+}}
+
 class ProgressTracking extends React.Component {
     constructor(props) {
       super(props);
@@ -128,7 +133,7 @@ class ProgressTracking extends React.Component {
 
             <div className="character">
               <img src={this.state.pokemon} alt="pokemon" onClick={this.handleOpenModal} />
-              <ReactModal isOpen={this.state.showCharacterModal} ariaHideApp={false}>
+              <ReactModal style={modalStyle} isOpen={this.state.showCharacterModal} ariaHideApp={false}>
 
                 <button onClick={this.handleCloseCharacterModal}>X</button><br/>
                 <label> Enter student names separated by commas: </label><br/>
@@ -145,7 +150,7 @@ class ProgressTracking extends React.Component {
                                   onClick={this.handleOpenGoalModal}
                                   max={this.state.numResponsesExpected}
                                   label={this.state.numResponses + "/" + this.state.numResponsesExpected}/>
-            <ReactModal isOpen={this.state.showGoalModal} ariaHideApp={false}>
+            <ReactModal style={modalStyle} isOpen={this.state.showGoalModal} ariaHideApp={false}>
 
               <button onClick={this.handleCloseGoalModal}>X</button>
               <div>
@@ -182,10 +187,10 @@ class ProgressTracking extends React.Component {
 
           <div className="character">
             <img src={this.state.pokemon} alt="pokemon" onClick={this.handleOpenCharacterModal} />
-            <ReactModal isOpen={this.state.showCharacterModal} ariaHideApp={false}>
+            <ReactModal style={modalStyle} isOpen={this.state.showCharacterModal} ariaHideApp={false}>
 
             <button onClick={this.handleCloseCharacterModal}>X</button><br/>
-                <label> Enter student names separated by commas: </label><br/>
+              <label> Enter student names separated by commas: </label><br/>
               <input type="text" name="nameInput" value={this.state.nameInput} onChange={this.handleNameInputChange}/>
               <button type="submit" onClick={this.handleCharacterSubmit}>Submit</button>
 
@@ -196,7 +201,8 @@ class ProgressTracking extends React.Component {
 
           <button className="add btn btn-lg btn-secondary" onClick={this.handleOpenGoalModal}>Add goal</button>
 
-          <ReactModal isOpen={this.state.showGoalModal} ariaHideApp={false}>
+
+          <ReactModal style={modalStyle} isOpen={this.state.showGoalModal} ariaHideApp={false}>
 
             <button onClick={this.handleCloseGoalModal}>X</button>
               <div>
