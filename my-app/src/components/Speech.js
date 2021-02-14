@@ -8,17 +8,21 @@ class Speech extends React.Component {
     super(props);
 
     this.state = {
-      pokemonspeech: "Hello! 😊"
+      pokemonspeech: "Hello! 😊",
     };
 
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleKeyPress(event) {
+    console.log(this.props);
+
+    if(event.key == this.props.keyInput) {
+      this.setState( {pokemonspeech: this.props.responseInput} );
+    }
     if(event.key === "q") { // Q
       this.setState( {pokemonspeech: "That was a great question!"} );
     }
-    console.log("test");
   }
 
   render () {
