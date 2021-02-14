@@ -42,6 +42,14 @@
   bottom: 10px;
 }
 
+.donationButton {
+  position: absolute;
+  left: 80px;
+  top: 30px;
+  width: 175px;
+  height: 83px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

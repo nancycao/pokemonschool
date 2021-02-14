@@ -230,8 +230,6 @@ class ProgressTracking extends React.Component {
             </div>
         </div>
           <img className="add" onClick={this.handleOpenGoalModal} src={addGoal}/>
-          {/* <button className="add btn btn-lg btn-secondary" onClick={this.handleOpenGoalModal}>Add goal</button> */}
-
 
           <ReactModal style={modalStyle} isOpen={this.state.showGoalModal} ariaHideApp={false}>
 

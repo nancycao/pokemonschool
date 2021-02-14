@@ -1,23 +1,38 @@
 import React from "react";
 import ReactModal from 'react-modal';
-import Speech from "./Speech.js"
 import '../CSS/Character.css'
-import squirtle from '../assets/dashboard/squirtle.gif';
+import donationButton from '../assets/dashboard/donate.png'
+
+const modalStyle = {content: {
+    'margin-top': '-250px', position: 'absolute', width: '500px', height: '500px',
+    'marginLeft': '-250px', left: '50%', top: '50%'
+  }}
 
 class Donation extends React.Component {
     constructor(props) {
       super(props);
 
       this.state = {
+        showModal: false,
         donationAmount: 5,
         donationName: "",
         donationEmail: "",
       };
 
+      this.handleOpenModal = this.handleOpenModal.bind(this);
+      this.handleCloseModal = this.handleCloseModal.bind(this);
       this.handleDonationAmountChange = this.handleDonationAmountChange.bind(this);
       this.handleDonationNameChange = this.handleDonationNameChange.bind(this);
       this.handleDonationEmailChange = this.handleDonationEmailChange.bind(this);
       this.handleDonation = this.handleDonation.bind(this);
+    }
+
+    handleOpenModal () {
+      this.setState( { showModal: true } );
+    }
+
+    handleCloseModal () {
+      this.setState( { showModal: false } );
     }
 
     handleDonationAmountChange (event) {
@@ -30,20 +45,6 @@ class Donation extends React.Component {
       this.setState({donationEmail: event.target.value});
     }
     handleDonation (event) {
-      // // Demo API
-      // console.log("demo api");
-      // fetch('https://demo.checkbook.io/v3/check', {
-      //   method: "GET",
-      //   headers: {
-      //     "Accept": "application/json",
-      //     'Authorization': 'd6aa2703655f4ba2af2a56202961ca86:dXbCgzYBMibj8ZwuQMd2NXr6rtvjZ8'
-      //   }
-      // }).then(res => res.json())
-      // .then(json =>
-      //   console.log("responses: ", json.toString())
-      //   // this.setState({numResponses: json.total_items.toString()})
-      // );
-
       // Request Invoice
       const url = "https://api.sandbox.checkbook.io/v3";
       console.log(url);
@@ -69,13 +70,20 @@ class Donation extends React.Component {
       .then(json =>
         console.log("responses: ", json.toString())
       );
+      this.handleCloseModal();
     }
 
 
     render() {
       return (
-            <div>
-                <label> Would you like to donate? </label>
+        <div>
+            <img src={donationButton} className="donationButton" onClick={this.handleOpenModal}/>
+            {/* <button className="donationButton btn btn-lg btn-secondary" onClick={this.handleOpenModal}>DONATE</button> */}
+            <ReactModal style={modalStyle} isOpen={this.state.showModal} ariaHideApp={false}>
+
+              <button onClick={this.handleCloseModal}>X</button>
+              <div>
+                <h1> Would you like to donate? </h1>
                 <br/>
                 <label> Amount </label>
                 <br/>
@@ -91,6 +99,8 @@ class Donation extends React.Component {
                 <br/>
                 <button type="submit" onClick={this.handleDonation}>Donate</button>
               </div>
+            </ReactModal>
+        </div>
 
       );
     }
