@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../CSS/ProgressTracking.css'
 import ReactModal from 'react-modal';
 import xpBar from '../assets/dashboard/xp_bar.png';
+import endClassButton from '../assets/dashboard/end_class_button.png';
 
 class ProgressTracking extends React.Component {
     constructor(props) {
@@ -75,11 +76,25 @@ class ProgressTracking extends React.Component {
             <ReactModal isOpen={this.state.showModal} ariaHideApp={false}>
 
               <button onClick={this.handleCloseModal}>X</button>
+              <div>
                 <label> Enter typeform ID: </label>
                 <input type="text" name="formId" value={this.state.formId} onChange={this.handleFormIdChange}/>
+              </div>
+              <div>
+                <label> Enter # of expected total responses: </label>
                 <input type="text" name="numResponsesExpected" value={this.state.numResponsesExpected} onChange={this.handleNumResponsesExpected}/>
-                <button type="submit" onClick={this.handleSubmit}>Submit</button>
+              </div>
+              <button type="submit" onClick={this.handleSubmit}>Submit</button>
             </ReactModal>
+            {this.state.numResponses == this.state.numResponsesExpected
+              ? <a href="https://drive.google.com/file/d/1RswQNOiJAYzuSLR_wM2LeRi5ZCGDIZmi/view?usp=sharing">
+                  <img  src={endClassButton} className="end-class-button" alt="end class"/>
+                </a>
+              : <a href="https://drive.google.com/file/d/1-VaiSG_GDp7denOOP5FcRDBwMhdYLOQc/view?usp=sharing">
+                  <img src={endClassButton} className="end-class-button" alt="end class"/>
+                </a>
+            // <img  src={endClassButton} className="end-class-button" alt="end class"/>
+            }
           </div>
         );
       }
@@ -97,11 +112,12 @@ class ProgressTracking extends React.Component {
                 </div>
                 <div>
                   <label> Enter # of expected total responses: </label>
-                <input type="text" name="numResponsesExpected" value={this.state.numResponsesExpected} onChange={this.handleNumResponsesExpected}/>
+                  <input type="text" name="numResponsesExpected" value={this.state.numResponsesExpected} onChange={this.handleNumResponsesExpected}/>
                 </div>
                 <button type="submit" onClick={this.handleSubmit}>Submit</button>
               </div>
           </ReactModal>
+          <img src={endClassButton} className="end-class-button" alt="end class"/>
         </div>
       );
     }
