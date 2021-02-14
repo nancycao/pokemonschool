@@ -6,6 +6,19 @@ import speechbubble from "../assets/dashboard/speech_bubble.png"
 class Speech extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      pokemonspeech: "Hello! 😊"
+    };
+
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+  handleKeyPress(event) {
+    if(event.key === "q") { // Q
+      this.setState( {pokemonspeech: "That was a great question!"} );
+    }
+    console.log("test");
   }
 
   render () {
@@ -23,7 +36,7 @@ class Speech extends React.Component {
     return (
       <div className="container">
         <img src={speechbubble}/>
-        <span> Hello! 😊</span>
+        <textarea class="pokemonspeech" onKeyPress={this.handleKeyPress} value={this.state.pokemonspeech}/>
       </div>
     );
   };
