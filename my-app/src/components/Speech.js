@@ -12,7 +12,7 @@ class Speech extends React.Component {
     //console.log(this.props.nameString);
     if (this.props.nameString.length > 0 && this.props.showGreetings) {
       return (
-        <div class="container">
+        <div className="container">
           <img src={speechbubble}/>
           <span> Welcome Pokemon Trainer
           <TextLoop children={this.props.nameString.split(',')}/>!
@@ -21,7 +21,7 @@ class Speech extends React.Component {
       );
     }
     return (
-      <div class="container">
+      <div className="container">
         <img src={speechbubble}/>
         <span> Hi, I'm Squirtle! </span>
       </div>

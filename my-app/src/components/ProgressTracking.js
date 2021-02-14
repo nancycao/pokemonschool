@@ -85,7 +85,7 @@ class ProgressTracking extends React.Component {
       }
       return (
         <div>
-          <button class="add" onClick={this.handleOpenModal}>Add goal</button>
+          <button className="add btn btn-lg btn-secondary" onClick={this.handleOpenModal}>Add goal</button>
 
           <ReactModal isOpen={this.state.showModal} ariaHideApp={false}>
 
