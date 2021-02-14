@@ -11,6 +11,8 @@ import '../CSS/Character.css'
 import squirtle from '../assets/dashboard/squirtle.gif';
 import wartortle from '../assets/dashboard/wartortle.gif';
 import blastoise from '../assets/dashboard/blastoise.gif';
+import addGoal from '../assets/dashboard/add_goal.png';
+
 import Donation from './Donation.js';
 
 const modalStyle = {content: {
@@ -198,8 +200,8 @@ class ProgressTracking extends React.Component {
             </ReactModal>
             </div>
         </div>
-
-          <button className="add btn btn-lg btn-secondary" onClick={this.handleOpenGoalModal}>Add goal</button>
+          <img className="add" onClick={this.handleOpenGoalModal} src={addGoal}/>
+          {/* <button className="add btn btn-lg btn-secondary" onClick={this.handleOpenGoalModal}>Add goal</button> */}
 
 
           <ReactModal style={modalStyle} isOpen={this.state.showGoalModal} ariaHideApp={false}>

@@ -1,7 +1,9 @@
 .add {
   position: absolute;
-  right: 150px;
-  top: 50px;
+  right: 100px;
+  top: 30px;
+  width: 175px;
+  height: 83px;
 }
 
 .progress {
