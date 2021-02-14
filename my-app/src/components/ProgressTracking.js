@@ -11,6 +11,7 @@ import '../CSS/Character.css'
 import squirtle from '../assets/dashboard/squirtle.gif';
 import wartortle from '../assets/dashboard/wartortle.gif';
 import blastoise from '../assets/dashboard/blastoise.gif';
+import Donation from './Donation.js';
 
 class ProgressTracking extends React.Component {
     constructor(props) {
@@ -129,10 +130,12 @@ class ProgressTracking extends React.Component {
               <img src={this.state.pokemon} alt="pokemon" onClick={this.handleOpenModal} />
               <ReactModal isOpen={this.state.showCharacterModal} ariaHideApp={false}>
 
-                <button onClick={this.handleCloseCharacterModal}>X</button>
-                  <label> Enter names seperated by commas: </label>
-                  <input type="text" name="nameInput" value={this.state.nameInput} onChange={this.handleNameInputChange}/>
-                  <button type="submit" onClick={this.handleCharacterSubmit}>Submit</button>
+                <button onClick={this.handleCloseCharacterModal}>X</button><br/>
+                <label> Enter student names separated by commas: </label><br/>
+                <input type="text" name="nameInput" value={this.state.nameInput} onChange={this.handleNameInputChange}/>
+                <button type="submit" onClick={this.handleCharacterSubmit}>Submit</button>
+
+                <Donation />
               </ReactModal>
               </div>
           </div>
@@ -181,10 +184,12 @@ class ProgressTracking extends React.Component {
             <img src={this.state.pokemon} alt="pokemon" onClick={this.handleOpenCharacterModal} />
             <ReactModal isOpen={this.state.showCharacterModal} ariaHideApp={false}>
 
-              <button onClick={this.handleCloseCharacterModal}>X</button>
-                <label> Enter names seperated by commas: </label>
-                <input type="text" name="nameInput" value={this.state.nameInput} onChange={this.handleNameInputChange}/>
-                <button type="submit" onClick={this.handleCharacterSubmit}>Submit</button>
+            <button onClick={this.handleCloseCharacterModal}>X</button><br/>
+                <label> Enter student names separated by commas: </label><br/>
+              <input type="text" name="nameInput" value={this.state.nameInput} onChange={this.handleNameInputChange}/>
+              <button type="submit" onClick={this.handleCharacterSubmit}>Submit</button>
+
+              <Donation />
             </ReactModal>
             </div>
         </div>
