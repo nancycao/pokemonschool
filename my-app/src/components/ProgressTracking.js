@@ -119,10 +119,10 @@ class ProgressTracking extends React.Component {
                 .then(json => {
                   //console.log("responses: ", json.total_items.toString())//;
                   this.setState({numResponses: json.total_items.toString()});
-                  if (json.total_items == 6) {
+                  if (json.total_items == 2) {
                     this.setState( {pokemon: wartortle} );
                   };
-                  if (json.total_items == 7) {
+                  if (json.total_items == 3) {
                     this.setState( {pokemon: blastoise} );
                   };
                 }
@@ -134,7 +134,7 @@ class ProgressTracking extends React.Component {
 
     render() {
       console.log(this.state);
-      if (this.state.numResponsesExpected != "0" && this.state.numResponses != "0") {
+      if (this.state.numResponsesExpected != "0" && this.state.numResponsesExpected != "") {
         return (
           <div>
 
@@ -148,16 +148,24 @@ class ProgressTracking extends React.Component {
             </div>
 
             <div className="character">
-              <img src={this.state.pokemon} alt="pokemon" onClick={this.handleOpenModal} />
+              <img src={this.state.pokemon} alt="pokemon" onClick={this.handleOpenCharacterModal} />
               <ReactModal style={modalStyle} isOpen={this.state.showCharacterModal} ariaHideApp={false}>
 
                 <button onClick={this.handleCloseCharacterModal}>X</button><br/>
                 <label> Enter student names separated by commas: </label><br/>
                 <input type="text" name="nameInput" value={this.state.nameInput} onChange={this.handleNameInputChange}/>
+                <br/>
+                <br/>
 
+                <h3>Character Key Bindings</h3>
+                <label> Enter key: </label><br/>
                 <input type="text" name="keyInput1" value={this.state.keyInput1} onChange={this.handlekeyInputChange}/>
-                <input type="text" name="responseInput1" value={this.state.responseInput1} onChange={this.handleResponseInputChange}/>
+                <br/>
 
+                <label> Enter message: </label><br/>
+                <input type="text" name="responseInput1" value={this.state.responseInput1} onChange={this.handleResponseInputChange}/>
+                <br/>
+                <br/>
                 <button type="submit" onClick={this.handleCharacterSubmit}>Submit</button>
                 <br/>
               </ReactModal>
