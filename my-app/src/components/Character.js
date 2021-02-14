@@ -50,7 +50,8 @@ class Character extends React.Component {
         <div>
           <div className ="speech">
             <Speech nameString={this.state.nameInput}
-                    showGreetings={this.state.showGreetings}/>
+                    showGreetings={this.state.showGreetings}
+            />
           </div>
 
           <div className="character">

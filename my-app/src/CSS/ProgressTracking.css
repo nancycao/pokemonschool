@@ -1,0 +1,12 @@
+.add {
+  position: absolute;
+  left: 1200px;
+  margin-top: 50px;
+}
+
+.progress {
+  position: absolute;
+  width: 350px;
+  left: 1050px;
+  top: 45px;
+}

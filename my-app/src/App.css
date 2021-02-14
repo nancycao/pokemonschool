@@ -70,13 +70,6 @@
   bottom: 225px;
 }
 
-.progress {
-  position: absolute;
-  width: 350px;
-  left: 1050px;
-  top: 45px;
-}
-
 .App-header {
   /* background-image: url(./dashboard/background.png); */
   /* background-color: #282c34; */
