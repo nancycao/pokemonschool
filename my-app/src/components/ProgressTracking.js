@@ -119,10 +119,10 @@ class ProgressTracking extends React.Component {
                 .then(json => {
                   //console.log("responses: ", json.total_items.toString())//;
                   this.setState({numResponses: json.total_items.toString()});
-                  if (json.total_items == 6) {
+                  if (json.total_items == 2) {
                     this.setState( {pokemon: wartortle} );
                   };
-                  if (json.total_items == 7) {
+                  if (json.total_items == 3) {
                     this.setState( {pokemon: blastoise} );
                   };
                 }
@@ -134,7 +134,7 @@ class ProgressTracking extends React.Component {
 
     render() {
       console.log(this.state);
-      if (this.state.numResponsesExpected != "0" && this.state.numResponses != "0") {
+      if (this.state.numResponsesExpected != "0" && this.state.numResponsesExpected != "") {
         return (
           <div>
 
