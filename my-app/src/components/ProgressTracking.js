@@ -13,8 +13,6 @@ import wartortle from '../assets/dashboard/wartortle.gif';
 import blastoise from '../assets/dashboard/blastoise.gif';
 import addGoal from '../assets/dashboard/add_goal.png';
 
-import Donation from './Donation.js';
-
 const modalStyle = {content: {
   'margin-top': '-250px', position: 'absolute', width: '500px', height: '500px',
   'marginLeft': '-250px', left: '50%', top: '50%'
