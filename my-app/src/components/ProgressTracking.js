@@ -172,7 +172,6 @@ class ProgressTracking extends React.Component {
               : <a href="https://drive.google.com/file/d/1-VaiSG_GDp7denOOP5FcRDBwMhdYLOQc/view?usp=sharing">
                   <img src={endClassButton} className="end-class-button" alt="end class"/>
                 </a>
-            // <img  src={endClassButton} className="end-class-button" alt="end class"/>
             }
           </div>
         );
@@ -219,7 +218,9 @@ class ProgressTracking extends React.Component {
                 <button type="submit" onClick={this.handleGoalSubmit}>Submit</button>
               </div>
           </ReactModal>
-          <img src={endClassButton} className="end-class-button" alt="end class"/>
+          <a href="https://drive.google.com/file/d/1RswQNOiJAYzuSLR_wM2LeRi5ZCGDIZmi/view?usp=sharing">
+            <img src={endClassButton} className="end-class-button" alt="end class"/>
+          </a>
         </div>
       );
     }
